@@ -1,0 +1,53 @@
+<!-- Check if paste exists first -->
+<div *ngIf="currentPaste.idx; then pasteExists else pasteNotExists"></div>
+
+<ng-template #pasteExists>
+  <h3>{{ currentPaste.title }}</h3>
+  <ngx-codemirror name="paste" #paste="ngModel" [(ngModel)]="currentPaste.paste" [options]="{
+        lineNumbers: true,
+        theme: 'material',
+        mode: 'javascript',
+        readOnly: true
+      }">
+  </ngx-codemirror>
+  <h4>RAW Format</h4>
+  <textarea style="height: 250px" defaultValue="{{ currentPaste.paste }}" readOnly></textarea>
+  <div class="row">
+    <h4>Paste Information</h4>
+    <div class="col s12 date">
+      <i class="material-icons prefix" style="margin: 5px 2px">
+        date_range
+      </i>
+      <span class="paste-info">
+        <b>Posted on: </b>
+        {{ currentPaste.createdAt | date: 'medium' }}
+      </span>
+    </div>
+    <!-- <div class="col s12 date">
+      <i class="material-icons prefix" style="margin: 5px 2px">
+        access_time
+      </i>
+      <span class="paste-info">
+        <b>Expires: </b>
+        {paste.expireAt
+        ? moment(paste.expireAt).format("lll")
+        : "Never"}
+      </span>
+    </div> -->
+  </div>
+  <h4>Share this Paste</h4>
+  <div class="row">
+    <div class="col s8">
+      <input id="share" value="http://localhost:4200/get/{{ currentPaste.idx }}" readOnly #clipboardCopy />
+    </div>
+    <div class="col s4">
+      <button class="btn" [ngxClipboard]="clipboardCopy">
+        Copy
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #pasteNotExists>
+  <h3>The Paste does not exist</h3>
+</ng-template>

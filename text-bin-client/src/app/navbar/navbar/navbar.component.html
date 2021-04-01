@@ -1,0 +1,35 @@
+<nav class="purple darken-4">
+  <div class="nav-wrapper container">
+    <span class="brand-logo">
+      <a routerLink="/">Text Bin MEAN</a>
+      <i class="large material-icons">rss_feed</i>
+    </span>
+    <a routerLink="/" data-target="mobile-sidebar" class="sidenav-trigger">
+      <i class="material-icons">menu</i>
+    </a>
+    <ul class="right hide-on-med-and-down">
+      <li>
+        <a routerLink="/">New Paste</a>
+      </li>
+      <li>
+        <a routerLink="/latest">Latest Pastes</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<ul class="sidenav sidenav-close" id="mobile-sidebar">
+  <li>
+    <div class="user-view">
+      <div class="drawer-background" style="height: 35px">
+        <h5>RSS Reader</h5>
+      </div>
+    </div>
+  </li>
+  <li>
+    <a routerLink="/">New Paste</a>
+  </li>
+  <li>
+    <a routerLink="/latest">Latest Pastes</a>
+  </li>
+</ul>
