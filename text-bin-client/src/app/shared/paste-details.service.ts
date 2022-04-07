@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http'
   providedIn: 'root',
 })
 export class PasteDetailsService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   formData: PasteDetails = new PasteDetails();
 
@@ -23,24 +23,13 @@ export class PasteDetailsService {
 
   // getPaste() {
   //   this.http
-  //   .get(this.baseURL + "/get" + PasteDetails.idx)
-  //   .subscribe((data) => {
-  //     return data;
-  //   });
+  //     .get(this.baseURL + "/get" + PasteDetails.idx)
+  //     .subscribe((data) => {
+  //       return data;
+  //     });
   // }
 
   postPasteDetails() {
     return this.http.post(this.baseURL + "/add", this.formData);
   }
-
-  // putVehicleDetails() {
-  //   return this.http.put(
-  //     `${this.baseURL}/${this.formData.vehicleId}`,
-  //     this.formData
-  //   );
-  // }
-
-  // deleteVehicleDetails(id: number) {
-  //   return this.http.delete(`${this.baseURL}/${id}`);
-  // }
 }

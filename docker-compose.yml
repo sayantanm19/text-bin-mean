@@ -1,0 +1,23 @@
+version: "3"
+services:
+  backend:
+    container_name: tbin-server
+    restart: always
+    build: text-bin-server/
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    links:
+      - mongo
+  frontend:
+    container_name: tbin-client
+    restart: always
+    build: text-bin-client/
+    ports:
+      - "80:80"
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - "27017:27017"
